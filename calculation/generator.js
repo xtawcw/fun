@@ -12,10 +12,10 @@ $(function(){
 	});
 	$("#switch").click(function(){
 		if(visible){
-			$(".result").css("visibility", "hidden");
+			$(".result").css("display", "none");
 			$("#switch").val("显示结果");
 		}else{
-			$(".result").css("visibility", "visible");
+			$(".result").css("display", "");
 			$("#switch").val("隐藏结果");
 		}
 		visible = !visible;
@@ -65,7 +65,7 @@ function formulaToHtml(formula){
 	let $operator = $("<span class='operator unit'>" + formula.operator + "</span>");
 	let $operand2 = $("<span class='operand unit'>" + formula.operand2 + "</span>");
 	let $equal = $("<span class='equal unit'>=</span>");
-	let $result = $("<span class='result unit'>" + formula.result + "</span>").css("visibility", "hidden");
+	let $result = $("<span class='result unit'>" + formula.result + "</span>").css("display", "none");
 	return $formula.append($operand1).append($operator).append($operand2).append($equal).append($result);
 }
 
