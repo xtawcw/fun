@@ -1,11 +1,24 @@
 let formulas = [];
 let operators = ['+', '-', '×', '÷'];
+let visible = false;
 
 $(function(){
 	$("#starter").click(function(){
+		visible = false;
+		$("#switch").val("显示结果");
 		$("#main").empty();
 		formulas = [];
 		generate();
+	});
+	$("#switch").click(function(){
+		if(visible){
+			$(".result").css("visibility", "hidden");
+			$("#switch").val("显示结果");
+		}else{
+			$(".result").css("visibility", "visible");
+			$("#switch").val("隐藏结果");
+		}
+		visible = !visible;
 	});
 });
 
@@ -52,7 +65,7 @@ function formulaToHtml(formula){
 	let $operator = $("<span class='operator unit'>" + formula.operator + "</span>");
 	let $operand2 = $("<span class='operand unit'>" + formula.operand2 + "</span>");
 	let $equal = $("<span class='equal unit'>=</span>");
-	let $result = $("<span class='operand unit'>" + formula.result + "</span>");
+	let $result = $("<span class='result unit'>" + formula.result + "</span>").css("visibility", "hidden");
 	return $formula.append($operand1).append($operator).append($operand2).append($equal).append($result);
 }
 
