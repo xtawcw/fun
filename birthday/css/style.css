@@ -62,7 +62,8 @@ h1, h2, span {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  
+
+
   h3 {
     position: fixed;
     text-align: left;
