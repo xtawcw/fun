@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<title>分数生成器</title>
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<script src="generator.js"></script>
+		<style type="text/css">
+			body {
+				/*font-size: 2em;*/
+			}
+			.formula {
+				display: inline-block;
+				padding: 0 15px;
+			}
+			.fraction {
+				display: inline-block;
+				height: 43px;
+			}
+			.operator {
+				display: inline-block;
+				vertical-align: middle;
+				height: 43px;
+			}
+			.numerator {
+				border-bottom:#000000 solid 1px;
+			}
+			.number {
+				text-align: center;
+			}
+			.unit {
+				padding-right: 3px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<input id="starter" type="button" value="开始生成算式" />
+			<input id="switch" type="button" value="显示结果" />
+		</div>
+		<div id="main"></div>
+	</body>
+</html>
