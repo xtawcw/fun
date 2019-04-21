@@ -7,13 +7,14 @@ function Formula(){
 		this.randomValues();
 		let orders = [0];
 		$main = $("#main");
-		let $formula = $("<div class='formula'></div>");
+		let $formula = $("<li class='formula resultHidden'></li>");
 		$main.append($formula);
 		for(let i=0;i<this.operands.length;i++){
 			$formula.append(this.getFractionNode(this.operands[i]));
 			$formula.append(this.getOperatorNode(this.operators[i]));
 		}
-		$formula.append(this.getFractionNode(this.result).addClass("result"));
+		this.$result = this.getFractionNode(this.result).addClass("result").addClass("hidden");
+		$formula.append(this.$result);
 	}
 	
 	this.getFractionNode = function(fraction){
@@ -101,10 +102,40 @@ function Formula(){
 	this.initialize();
 }
 
+let formulas = [];
+
+function hideResults(){
+	$("#switch").val("显示结果");
+	$(".result").addClass("hidden");
+	$(".formula").addClass("resultHidden");
+}
+
+function showResults(){
+	$("#switch").val("隐藏结果");
+	$(".result").removeClass("hidden");
+	$(".formula").removeClass("resultHidden");
+}
+
 $(function(){
-	
-	let number = 100;
-	for(let i=0;i<number;i++){
-		new Formula();
-	}
+	$("#starter").click(function(){
+		hideResults();
+		$("#main").empty();
+		formulas = [];
+		
+		let value = $("#amount").val();
+		let number = 100;
+		if(parseInt(value) === Number(value)){
+			number = parseInt(value);
+		}
+		for(let i=0;i<number;i++){
+			formulas.push(new Formula());
+		}
+	});
+	$("#switch").click(function(){
+		if($(".result").hasClass("hidden")){
+			showResults();
+		}else{
+			hideResults();
+		}
+	});
 });

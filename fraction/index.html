@@ -6,10 +6,28 @@
 		<style type="text/css">
 			body {
 				/*font-size: 2em;*/
+				counter-reset: sectioncounter;
+			}
+			#main {
+				margin-top: 10px;
+				overflow: auto;
+				height: calc(100% - 35px);
 			}
 			.formula {
 				display: inline-block;
 				padding: 0 15px;
+				list-style-type: none;
+				width: 300px;
+			}
+			.formula.resultHidden {
+				height: 200px;
+			}
+			li.formula:before {
+				content: counter(sectioncounter) ".";
+				counter-increment: sectioncounter;
+				padding-right: 15px;
+				display: inline-block;
+				width: 20px;
 			}
 			.fraction {
 				display: inline-block;
@@ -19,6 +37,9 @@
 				display: inline-block;
 				vertical-align: middle;
 				height: 43px;
+			}
+			.result.hidden {
+				display: none;
 			}
 			.numerator {
 				border-bottom:#000000 solid 1px;
@@ -32,7 +53,9 @@
 		</style>
 	</head>
 	<body>
-		<div>
+		<div id="bar">
+			<label for="amount">数量</label>
+			<input id="amount" type="number" placeholder="请输入大于0的整数" />
 			<input id="starter" type="button" value="开始生成算式" />
 			<input id="switch" type="button" value="显示结果" />
 		</div>
