@@ -1,7 +1,7 @@
 function Formula(){
 	this.max = 100;
 	this.min = 0;
-	this.operatorList = ['+', '-'];
+	this.operatorList = ['+', '-', '×', '÷'];
 	
 	this.initialize = function(){
 		this.randomValues();
@@ -58,8 +58,14 @@ function Formula(){
 			result2 = this.gcd(this.operands[0][1], this.operands[1][1]);
 			if(this.operators[0] === '+'){
 				result1 = result2 / this.operands[0][1] * this.operands[0][0] + result2 / this.operands[1][1] * this.operands[1][0];
-			}else{
+			}else if(this.operators[0] === '-'){
 				result1 = result2 / this.operands[0][1] * this.operands[0][0] - result2 / this.operands[1][1] * this.operands[1][0];
+			}else if(this.operators[0] === '×'){
+				result2 = this.operands[0][1]* this.operands[1][1];
+				result1 = this.operands[0][0]* this.operands[1][0];
+			}else if(this.operators[0] === '÷'){
+				result2 = this.operands[0][1]* this.operands[1][0];
+				result1 = this.operands[0][0]* this.operands[1][1];
 			}
 		}while(result2 > this.max || result1 > this.max || result1 < this.min)
 		
